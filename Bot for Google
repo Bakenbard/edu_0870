@@ -1,0 +1,24 @@
+// ==UserScript==
+// @name         Bot for Google
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://www.google.com/*
+// @grant        none
+// ==/UserScript==
+
+document.getElementsByName('q')[0].value = "Гобой";
+let btnK = document.getElementsByName('btnK')[0];
+if (btnK != undefined) {
+document.getElementsByName('btnK')[0].click();
+} else {
+let links = document.links;
+   for (let i=0;i<links.length; i++){
+       if(links[i].href.indexOf("xn----7sbab5aqcbiddtdj1e1g.xn--p1ai") != -1) {
+    console.log("get it "+links[i]);
+    links[i].click();
+    break;
+   }
+   }
+}
