@@ -1,0 +1,43 @@
+// ==UserScript==
+// @name         Bot for Ya
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://yandex.ru/*
+// @grant        none
+// ==/UserScript==
+
+
+let keywords = ["Гобой","Флейта","Как звучит флейта"];
+let keyword = keywords[getRandom(0,keywords.length)];
+let btn = document.querySelector(".button__text").parentElement;
+let inputYa = document.getElementById("text");
+let i=0;
+
+if (btn != undefined) {
+    let timerId = setInterval(()=> {
+        inputYa.value += keyword[i];
+        i++;
+        if (i==keyword.length) {
+            clearInterval(timerId);
+            btn.click();
+        }
+    },1000)
+}else {
+    let links = document.links;
+        for(let i=0; i<links.length; i++) {
+            if(links[i].href.indexOf("xn----7sbab5aqcbiddtdj1e1g.xn--p1ai") != -1) {
+                console.log("This is link: "+links[i]);
+                //link.click();
+                //break;
+            }
+    }
+    }
+
+
+
+
+function getRandom(min, max) {
+    return Math.floor(Math.random()*(max-min)+min);
+}
